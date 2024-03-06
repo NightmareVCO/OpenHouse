@@ -1,8 +1,8 @@
-package org.example.openhouse2024.controlller;
+package org.example.registrostand.controlller;
 
-import org.example.openhouse2024.Email.EmailService;
-import org.example.openhouse2024.Entity.Estudiante;
-import org.example.openhouse2024.Repository.EstudianteRepository;
+import org.example.registrostand.Email.EmailService;
+import org.example.registrostand.Entity.Estudiante;
+import org.example.registrostand.Repository.EstudianteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

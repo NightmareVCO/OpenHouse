@@ -1,6 +1,6 @@
-package org.example.openhouse2024.Repository;
+package org.example.registrostand.Repository;
 
-import org.example.openhouse2024.Entity.Estudiante;
+import org.example.registrostand.Entity.Estudiante;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

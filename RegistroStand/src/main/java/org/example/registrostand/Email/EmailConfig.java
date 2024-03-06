@@ -1,4 +1,4 @@
-package org.example.openhouse2024.Email;
+package org.example.registrostand.Email;
 
 import org.simplejavamail.api.mailer.Mailer;
 import org.simplejavamail.api.mailer.config.TransportStrategy;

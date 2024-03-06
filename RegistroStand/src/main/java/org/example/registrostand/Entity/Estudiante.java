@@ -1,4 +1,4 @@
-package org.example.openhouse2024.Entity;
+package org.example.registrostand.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
