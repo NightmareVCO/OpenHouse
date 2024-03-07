@@ -66,6 +66,7 @@ public class EmailService {
 
         cuerpo = cuerpo.replace("{{nombre}}", estudiante.getNombre());
         cuerpo = cuerpo.replace("{{apellido}}", estudiante.getApellido());
+        cuerpo = cuerpo.replace("{{carrera}}", estudiante.getCarreraDeInteres());
 
         // Construir el email con el contenido HTML
         Email email = EmailBuilder.startingBlank()
