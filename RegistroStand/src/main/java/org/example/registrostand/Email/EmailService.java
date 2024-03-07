@@ -64,8 +64,11 @@ public class EmailService {
         String asunto = "¡Bienvenido a nuestro Open House 2024!";
         String cuerpo = cargarContenidoHTML("correo.html");
 
-        cuerpo = cuerpo.replace("{{nombre}}", estudiante.getNombre());
-        cuerpo = cuerpo.replace("{{apellido}}", estudiante.getApellido());
+        String nombreCapitalizado = capitalizarPrimeraLetra(estudiante.getNombre());
+        String apellidoCapitalizado = capitalizarPrimeraLetra(estudiante.getApellido());
+
+        cuerpo = cuerpo.replace("{{nombre}}", nombreCapitalizado);
+        cuerpo = cuerpo.replace("{{apellido}}", apellidoCapitalizado);
         cuerpo = cuerpo.replace("{{carrera}}", estudiante.getCarreraDeInteres());
 
         // Construir el email con el contenido HTML
@@ -94,4 +97,12 @@ public class EmailService {
             return ""; // Manejar el error apropiadamente en tu aplicación
         }
     }
+
+    public String capitalizarPrimeraLetra(String palabra) {
+        if (palabra == null || palabra.isEmpty()) {
+            return palabra;
+        }
+        return palabra.substring(0, 1).toUpperCase() + palabra.substring(1);
+    }
+
 }
