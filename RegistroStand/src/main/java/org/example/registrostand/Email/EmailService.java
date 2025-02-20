@@ -45,6 +45,7 @@ import org.simplejavamail.api.mailer.Mailer;
 import org.simplejavamail.email.EmailBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 
@@ -59,9 +60,10 @@ public class EmailService {
     private Mailer mailer;
 
     // Correo de Bienvenida
+    @Async
     public void enviarCorreoBienvenida(Estudiante estudiante) {
         // Cargar el contenido del archivo HTML
-        String asunto = "¡Bienvenido a nuestro Open House 2024!";
+        String asunto = "¡Bienvenido a nuestro Open House 2025!";
         String cuerpo = cargarContenidoHTML("correo.html");
 
         String nombreCapitalizado = capitalizarPrimeraLetra(estudiante.getNombre());
@@ -73,7 +75,7 @@ public class EmailService {
 
         // Construir el email con el contenido HTML
         Email email = EmailBuilder.startingBlank()
-                .from("cicc-csti@ce.pucmm.edu.do")
+                .from("OpenHouse2025@systechs.live")
                 .to(estudiante.getCorreo())
                 .withSubject(asunto)
                 .withHTMLText(cuerpo)
@@ -94,7 +96,7 @@ public class EmailService {
             return new String(bytes, StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
-            return ""; // Manejar el error apropiadamente en tu aplicación
+            return "";
         }
     }
 

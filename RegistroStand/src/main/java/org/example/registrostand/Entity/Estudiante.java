@@ -18,7 +18,6 @@ public class Estudiante {
     private int edad;
     private String provincia;
 
-    // Constructor que recibe todos los parámetros excepto el id
     public Estudiante(String nombre, String apellido, String correo, String carreraDeInteres, int edad, String provincia) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -28,12 +27,9 @@ public class Estudiante {
         this.provincia = provincia;
     }
 
-    // Constructor sin argumentos para JPA
     public Estudiante() {
-        // Constructor sin argumentos necesario para JPA
     }
 
-    // Getters y setters
     public Long getId() {
         return id;
     }

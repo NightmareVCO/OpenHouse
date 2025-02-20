@@ -19,10 +19,8 @@ public class EstudianteController {
 
     @PostMapping("/estudiantes")
     public void agregarEstudiante(@RequestBody Estudiante estudiante) {
-        // Guardar el estudiante en la base de datos
         Estudiante estudianteGuardado = estudianteRepository.save(estudiante);
 
-        // Enviar el correo de bienvenida al estudiante
         emailService.enviarCorreoBienvenida(estudianteGuardado);
     }
 }
