@@ -11,12 +11,11 @@ import {
 	ModalFooter,
 	ModalHeader,
 	NumberInput,
-	ToastProvider,
 	useDisclosure,
 } from '@heroui/react';
 import { sendEmail } from '@lib/action/email.action';
 import { provinces } from '@lib/data/provinces.data';
-import { startTransition, useActionState } from 'react';
+import { startTransition, useActionState, useState } from 'react';
 interface FormModalProps {
 	readonly buttonText: string;
 	readonly degree: string;
@@ -28,10 +27,15 @@ export default function FormModal({
 	degree,
 	setShouldConffeti,
 }: FormModalProps) {
+	const [edad, setEdad] = useState(0);
+
 	const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
 	const [{ errors }, formAction, pending] = useActionState(sendEmail, {
-		errors: {},
+		errors: {
+			email: '',
+			message: '',
+		},
 	});
 
 	const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -117,7 +121,6 @@ export default function FormModal({
 									/>
 									<NumberInput
 										label="Edad"
-										name="edad"
 										labelPlacement="outside"
 										placeholder="Ej. 20"
 										minValue={0}
@@ -125,8 +128,10 @@ export default function FormModal({
 										size="lg"
 										isRequired
 										isClearable
+										onValueChange={(value) => setEdad(value)}
 									/>
-									<input type="hidden" name="grado" value={degree} />
+									<input type="hidden" name="edad" value={edad} />
+									<input type="hidden" name="carreraDeInteres" value={degree} />
 									<Autocomplete
 										label="Provincia"
 										isRequired
