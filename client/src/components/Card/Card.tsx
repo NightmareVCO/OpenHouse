@@ -23,7 +23,7 @@ export default function OpenHouseCard({
 	...props
 }: OpenHouseCardProps) {
 	return (
-		<Card className="transition-transform hover:scale-[1.01] cols-3" {...props}>
+		<Card className="transition-transform hover:scale-[1.01] col-span-3 md:col-span-1" {...props}>
 			<CardBody className="px-3 pb-1">
 				<Image
 					alt="Card image"
