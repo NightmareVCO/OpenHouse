@@ -15,7 +15,7 @@ import {
 } from '@heroui/react';
 import { sendEmail } from '@lib/action/email.action';
 import { provinces } from '@lib/data/provinces.data';
-import { startTransition, useActionState, useState } from 'react';
+import { useActionState, useState } from 'react';
 interface FormModalProps {
 	readonly buttonText: string;
 	readonly degree: string;
@@ -32,29 +32,22 @@ export default function FormModal({
 	const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
 	const [{ errors }, formAction, pending] = useActionState(sendEmail, {
-		errors: {
-			email: '',
-			message: '',
-		},
+		errors: {},
 	});
 
 	const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		const form = e.currentTarget as HTMLFormElement;
-		const formData = new FormData(form);
 
-		startTransition(() => {
-			formAction(formData);
-			if (!errors) {
-				onOpenChange();
-				setShouldConffeti(true);
-				addToast({
-					title: 'Correo enviado',
-					description: 'El correo ha sido enviado con éxito',
-					color: 'primary',
-				});
-			}
-		});
+		if (!errors?.error) {
+			setShouldConffeti(true);
+			onOpenChange();
+			addToast({
+				title: 'Correo enviado',
+				description: 'El correo ha sido enviado con éxito',
+				color: 'primary',
+			});
+			setTimeout(() => setShouldConffeti(false), 3000);
+		}
 	};
 
 	return (
@@ -88,7 +81,7 @@ export default function FormModal({
 								</p>
 							</ModalHeader>
 							<ModalBody>
-								<Form id="form" validationErrors={errors} onSubmit={onSubmit}>
+								<Form id="form" action={formAction} validationErrors={errors} onSubmit={onSubmit}>
 									<Input
 										label="Nombre"
 										name="nombre"
