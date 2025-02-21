@@ -7,11 +7,11 @@ export default function Animation() {
 				<li />
 				<li />
 				<li />
-				<li />
-				<li />
-				<li />
-				<li />
-				<li />
+				<li className="hidden lg:block" />
+				<li className="hidden lg:block" />
+				<li className="hidden lg:block" />
+				<li className="hidden lg:block" />
+				<li className="hidden lg:block" />
 			</ul>
 		</div>
 	);

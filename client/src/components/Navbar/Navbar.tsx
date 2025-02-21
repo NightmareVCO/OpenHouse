@@ -16,29 +16,21 @@ import {
 import React from 'react';
 import OpenHouseIcon from '../Svg/OpenHouse2025';
 
-interface OpenHouseNavbarProps extends NavbarProps {}
+interface OpenHouseNavbarProps extends NavbarProps { }
 
 export default function OpenHouseNavbar({ ...props }: OpenHouseNavbarProps) {
-	const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
 	return (
 		<Navbar
 			{...props}
 			isBordered
 			classNames={{
-				base: cn('border-default-100', {
-					'bg-default-200/50 dark:bg-default-100/50': isMenuOpen,
-				}),
+				base: cn('border-default-100'),
 				wrapper: 'w-full justify-center bg-transparent',
 				item: 'hidden md:flex',
 			}}
 			height="70px"
-			isMenuOpen={isMenuOpen}
 			isBlurred
-			onMenuOpenChange={setIsMenuOpen}
 		>
-			<NavbarMenuToggle className="text-default-400 md:hidden" />
-
 			<NavbarBrand>
 				<CICCIcon />
 			</NavbarBrand>

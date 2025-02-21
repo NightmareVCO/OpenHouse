@@ -20,7 +20,7 @@ export default function HomePage() {
 	return (
 		<div className="flex flex-col items-center justify-center mx-auto max-w-7xl">
 			<header className="flex items-center justify-center">
-				<OpenHouseIcon className="size-96 hover:scale-[1.02] transition-transform" />
+				<OpenHouseIcon className="size-80 lg:size-96 hover:scale-[1.02] transition-transform" />
 			</header>
 			<main className="grid grid-cols-3 gap-6 p-4 place-items-center">
 				{degrees.map((degree) => (
